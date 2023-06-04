@@ -1,0 +1,69 @@
+<script lang="ts" setup></script>
+
+<template>
+  <div>
+    <div class="bg-sky-0 shadow-sm">
+      <nav
+        class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center">
+        <div class="flex items-center justify-between">
+          <div class="mr-5">
+            <img
+              src="~/assets/images/logoUkm.png"
+              alt="404"
+              width="50"
+              height="169" />
+          </div>
+          <NuxtLink
+            to="/"
+            class="text-xl font-bold text-gray-800 md:text-2xl hover:text-blue-600"
+            >E-LEARNING TECHCODE</NuxtLink
+          >
+          <!-- Mobile menu button -->
+          <div @click="showMenu = !showMenu" class="flex md:hidden">
+            <button
+              type="button"
+              class="text-blue-500 hover:text-blue-900 focus:outline-none focus:text-blue-500">
+              <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+        <ul
+          :class="showMenu ? 'flex' : 'hidden'"
+          class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
+          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
+            <NuxtLink to="/">Home</NuxtLink>
+          </li>
+          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
+            <NuxtLink to="/biodata">Biodata</NuxtLink>
+          </li>
+          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
+            <NuxtLink to="/contactus">Contact</NuxtLink>
+          </li>
+          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
+            <NuxtLink to="/login">Login</NuxtLink>
+          </li>
+          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
+            <NuxtLink to="/about">About</NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <slot />
+  </div>
+</template>
+
+<script lang="js">
+  export default {
+    data() {
+      return {
+        showMenu: false,
+      };
+    },
+  };
+</script>
