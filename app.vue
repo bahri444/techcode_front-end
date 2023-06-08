@@ -3,7 +3,8 @@
 </script>
 <template>
   <div id="app">
-    <NuxtLayout :name="layout">
+    <NuxtLayout :name="layout"
+      ><NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
     <slot />
