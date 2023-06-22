@@ -8,7 +8,7 @@
   <div>
     <div class="flex">
       <div
-        :class="isOpen ? 'w-40' : 'w-60'"
+        :class="isOpen ? 'w-38' : 'w-64'"
         class="flex flex-col h-screen p-3 duration-300 bg-blue-700 shadow">
         <div class="space-y-3">
           <div class="flex items-center justify-between">
@@ -65,10 +65,9 @@
                   class="flex items-center p-2 space-x-3 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
+                    fill="#f1f5f9"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100"
                     id="dashboard">
                     <path
@@ -80,15 +79,14 @@
               <!-- MENU INDUSTRIES -->
               <li class="rounded-sm">
                 <NuxtLink
-                  to="/admin/industry"
+                  to="/admin/industries"
                   class="flex items-center p-2 space-x-3 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     data-name="Layer 1"
-                    fill="none"
+                    fill="#f1f5f9"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100"
                     id="building">
                     <path
@@ -104,10 +102,9 @@
                   class="flex items-center p-2 space-x-3 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
+                    fill="#f1f5f9"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100"
                     id="account">
                     <path
@@ -119,14 +116,13 @@
               <!-- MENU CLASS -->
               <li class="rounded-sm">
                 <NuxtLink
-                  to="/admin/class"
+                  to="/admin/kelas"
                   class="flex items-center p-2 space-x-3 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
+                    fill="#f1f5f9"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100">
                     <path
                       stroke-linecap="round"
@@ -143,10 +139,9 @@
                   class="flex items-center p-2 space-x-3 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
+                    fill="#f1f5f9"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100">
                     <path
                       stroke-linecap="round"
@@ -165,11 +160,10 @@
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="none"
+                    fill="#f1f5f9"
                     width="40"
                     height="40"
-                    stroke="currentColor"
-                    class="w-6 h-6 text-gray-100"
+                    class="w-6 h-6"
                     id="book">
                     <path
                       d="M18,2H8A4,4,0,0,0,4,6V18a4,4,0,0,0,4,4H18a2,2,0,0,0,2-2V4A2,2,0,0,0,18,2ZM6,6A2,2,0,0,1,8,4H18V14H8a3.91,3.91,0,0,0-2,.56ZM8,20a2,2,0,0,1,0-4H18v4ZM10,8h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"></path>
@@ -185,11 +179,10 @@
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="none"
+                    fill="#f1f5f9"
                     width="40"
                     height="40"
-                    stroke="currentColor"
-                    class="w-6 h-6 text-gray-100"
+                    class="w-6 h-6"
                     id="book">
                     <path
                       d="M18,2H8A4,4,0,0,0,4,6V18a4,4,0,0,0,4,4H18a2,2,0,0,0,2-2V4A2,2,0,0,0,18,2ZM6,6A2,2,0,0,1,8,4H18V14H8a3.91,3.91,0,0,0-2,.56ZM8,20a2,2,0,0,1,0-4H18v4ZM10,8h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"></path>
@@ -205,10 +198,9 @@
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="none"
+                    fill="#f1f5f9"
                     width="40"
                     height="40"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100"
                     id="question">
                     <g data-name="Layer 2">
@@ -228,10 +220,9 @@
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 32 32"
-                    fill="none"
+                    fill="#f1f5f9"
                     width="40"
                     height="40"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100"
                     id="comment">
                     <g data-name="Layer 7">
@@ -251,11 +242,10 @@
                   class="flex items-center p-2 space-x-3 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
+                    fill="#f1f5f9"
                     data-name="Layer 2"
                     viewBox="0 0 48 48"
                     stroke-width="1.5"
-                    stroke="currentColor"
                     class="w-6 h-6 text-gray-100"
                     id="graduate">
                     <path
@@ -307,7 +297,7 @@
               <!-- ACTIFITY-->
               <li class="rounded-sm">
                 <NuxtLink
-                  to="/admin/actifities"
+                  to="/admin/actifity"
                   class="flex items-center p-2 space-x-3 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -356,7 +346,7 @@
           </div>
         </div>
       </div>
-      <div class="container mx-auto mt-12">
+      <div class="container mx-auto mt-5">
         <slot />
       </div>
     </div>

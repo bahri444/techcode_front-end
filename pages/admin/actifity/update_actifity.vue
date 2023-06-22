@@ -1,17 +1,13 @@
 <template>
   <div>
     <NuxtLayout name="sidebar">
-      <div class="text-center">
-        <p>testing class</p>
-      </div>
+      <p>testing update data</p>
     </NuxtLayout>
   </div>
 </template>
 
-<script setup>
-  definePageMeta({
-    layout: false,
-  });
+<script>
+  definePageMeta({ layout: false });
 </script>
 
 <style lang="scss" scoped></style>

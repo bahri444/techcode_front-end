@@ -1,9 +1,7 @@
 <template>
   <div>
     <NuxtLayout name="sidebar">
-      <div class="text-center">
-        <p>testing modul categories</p>
-      </div>
+      <p>test</p>
     </NuxtLayout>
   </div>
 </template>

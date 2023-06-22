@@ -3,7 +3,7 @@
 <template>
   <div>
     <!-- NAVBAR -->
-    <div class="bg-sky-0 shadow-md mb-10">
+    <div class="bg-sky-0 shadow-sm">
       <nav
         class="container px-2 py-2 mx-auto md:flex md:justify-between md:items-center">
         <div class="flex items-center justify-between">
@@ -12,11 +12,11 @@
               src="~/assets/images/logoUkm.png"
               alt="404"
               width="50"
-              height="169" />
+              height="50" />
           </div>
           <NuxtLink
             to="/"
-            class="text-xl font-bold text-gray-800 md:text-2xl hover:text-blue-600"
+            class="text-xl font-bold text-slate-800 md:text-2xl hover:text-blue-600"
             >E-LEARNING TECHCODE</NuxtLink
           >
           <!-- Mobile menu button -->
@@ -37,20 +37,26 @@
         <ul
           :class="showMenu ? 'flex' : 'hidden'"
           class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
+          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
             <NuxtLink to="/">Home</NuxtLink>
           </li>
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
-            <NuxtLink to="/biodata">Biodata</NuxtLink>
+          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
+            <NuxtLink to="/landingpage/galery">Galery</NuxtLink>
           </li>
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
-            <NuxtLink to="/contactus">Contact</NuxtLink>
+          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
+            <NuxtLink to="/landingpage/biografhy">Bigrafhy</NuxtLink>
           </li>
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
-            <NuxtLink to="/login">Login</NuxtLink>
+          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
+            <NuxtLink to="/landingpage/about">About</NuxtLink>
           </li>
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-600">
-            <NuxtLink to="/about">About</NuxtLink>
+          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
+            <NuxtLink to="/landingpage/contactus">Contact</NuxtLink>
+          </li>
+          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
+            <NuxtLink to="/auth/login">Login</NuxtLink>
+          </li>
+          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
+            <NuxtLink to="/products">Produk</NuxtLink>
           </li>
         </ul>
       </nav>
@@ -58,16 +64,15 @@
     <!-- END NAVBAR -->
     <slot />
     <!-- FOOTER -->
-    <div
-      class="bg-blue-600 hover:bg-gradient-to-r from-cyan-500 to-blue-500 text-white bottom-0 left-0 right-0 relative mt-10">
+    <div class="bg-blue-600 text-white bottom-0 left-0 right-0 relative mt-10">
       <div class="mx-auto w-full max-w-screen-xl">
         <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
           <div>
             <h2
-              class="mb-6 text-sm font-semibold text-gray-50 hover:text-gray-200 uppercase dark:text-white">
+              class="mb-6 text-sm font-semibold text-slate-50 hover:text-slate-200 uppercase dark:text-white">
               Company
             </h2>
-            <ul class="text-gray-50 hover:text-gray-200 font-medium">
+            <ul class="text-slate-50 hover:text-slate-200 font-medium">
               <li class="mb-4">
                 <a href="#" class="hover:underline">About</a>
               </li>
@@ -84,10 +89,10 @@
           </div>
           <div>
             <h2
-              class="mb-6 text-sm font-semibold text-gray-50 hover:text-gray-200 uppercase dark:text-white">
+              class="mb-6 text-sm font-semibold text-slate-50 hover:text-slate-200 uppercase dark:text-white">
               Help center
             </h2>
-            <ul class="text-gray-50 hover:text-gray-200 font-medium">
+            <ul class="text-slate-50 hover:text-slate-200 font-medium">
               <li class="mb-4">
                 <a href="#" class="hover:underline">Discord Server</a>
               </li>
@@ -104,10 +109,10 @@
           </div>
           <div>
             <h2
-              class="mb-6 text-sm font-semibold text-gray-50 hover:text-gray-200 uppercase dark:text-white">
+              class="mb-6 text-sm font-semibold text-slate-50 hover:text-slate-200 uppercase dark:text-white">
               Legal
             </h2>
-            <ul class="text-gray-50 hover:text-gray-200 font-medium">
+            <ul class="text-slate-50 hover:text-slate-200 font-medium">
               <li class="mb-4">
                 <a href="#" class="hover:underline">Privacy Policy</a>
               </li>
@@ -121,10 +126,10 @@
           </div>
           <div>
             <h2
-              class="mb-6 text-sm font-semibold text-gray-50 hover:text-gray-200 uppercase dark:text-white">
+              class="mb-6 text-sm font-semibold text-slate-50 hover:text-slate-200 uppercase dark:text-white">
               Download
             </h2>
-            <ul class="text-gray-50 hover:text-gray-200 font-medium">
+            <ul class="text-slate-50 hover:text-slate-200 font-medium">
               <li class="mb-4">
                 <a href="#" class="hover:underline">iOS</a>
               </li>
@@ -141,14 +146,14 @@
           </div>
         </div>
         <div class="px-4 py-6 md:flex md:items-center md:justify-between">
-          <span class="text-sm text-gray-50 sm:text-center"
+          <span class="text-sm text-slate-50 sm:text-center"
             >© 2023 <a href="https://flowbite.com/">Flowbite™</a>. All Rights
             Reserved.
           </span>
           <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
             <a
               href="#"
-              class="text-gray-50 hover:text-gray-200 dark:hover:text-white">
+              class="text-slate-50 hover:text-slate-200 dark:hover:text-white">
               <svg
                 class="w-5 h-5"
                 fill="currentColor"
@@ -163,7 +168,7 @@
             </a>
             <a
               href="#"
-              class="text-gray-50 hover:text-gray-200 dark:hover:text-white">
+              class="text-slate-50 hover:text-slate-200 dark:hover:text-white">
               <svg
                 class="w-5 h-5"
                 fill="currentColor"
@@ -178,7 +183,7 @@
             </a>
             <a
               href="#"
-              class="text-gray-50 hover:text-gray-200 dark:hover:text-white">
+              class="text-slate-50 hover:text-slate-200 dark:hover:text-white">
               <svg
                 class="w-5 h-5"
                 fill="currentColor"
@@ -191,7 +196,7 @@
             </a>
             <a
               href="#"
-              class="text-gray-50 hover:text-gray-200 dark:hover:text-white">
+              class="text-slate-50 hover:text-slate-200 dark:hover:text-white">
               <svg
                 class="w-5 h-5"
                 fill="currentColor"
@@ -206,7 +211,7 @@
             </a>
             <a
               href="#"
-              class="text-gray-50 hover:text-gray-200 dark:hover:text-white">
+              class="text-slate-50 hover:text-slate-200 dark:hover:text-white">
               <svg
                 class="w-5 h-5"
                 fill="currentColor"
@@ -231,6 +236,7 @@
   export default {
     data() {
       return {
+        src: "../path/to/flowbite/dist/flowbite.min.js",
         showMenu: false,
       };
     },
