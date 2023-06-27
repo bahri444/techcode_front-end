@@ -9,7 +9,7 @@
           <div class="sm:mx-auto sm:w-full sm:max-w-sm mb-4">
             <h2
               class="text-center text-1xl font-bold leading-9 tracking-tight text-slate-900">
-              ADD ACTIFITIES
+              UPDATE ACTIFITIES
             </h2>
           </div>
           <!-- END JUDUL FORM -->
@@ -22,8 +22,17 @@
                 v-model="actifity_categories_uuid"
                 name="floating_password"
                 class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                <option selected>select actifity categories</option>
-                <option value="{{  }}">{{ "testing" }}</option>
+                <option
+                  value="{{ actifityupdate.actifity_categories_uuid }}"
+                  v-for="data in actifityupdate.to_categories_actifity"
+                  selected>
+                  {{ data.actifity_categories_name }}
+                </option>
+                <option
+                  value="{{ actifityupdate.actifity_categories_uuid }}"
+                  v-for="valueCategories in data_categories">
+                  {{ valueCategories.actifity_categories_name }}
+                </option>
               </select>
               <label
                 for="floating_password"
@@ -37,8 +46,8 @@
               <input
                 type="text"
                 name="floating_last_name"
-                v-model="actifity_name"
                 id="floating_last_name"
+                v-model="actifity_name"
                 class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required />
@@ -228,41 +237,41 @@
           </div>
           <!--  END-BUTTON AND LINK -->
           <!-- <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-              <input
-                type="tel"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                name="floating_phone"
-                id="floating_phone"
-                class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required />
-              <label
-                for="floating_phone"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >Phone number (123-456-7890)</label
-              >
+              <div class="relative z-0 w-full mb-6 group">
+                <input
+                  type="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  name="floating_phone"
+                  id="floating_phone"
+                  class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  required />
+                <label
+                  for="floating_phone"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >Phone number (123-456-7890)</label
+                >
+              </div>
+              <div class="relative z-0 w-full mb-6 group">
+                <input
+                  type="text"
+                  name="floating_company"
+                  id="floating_company"
+                  class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  required />
+                <label
+                  for="floating_company"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >Company (Ex. Google)</label
+                >
+              </div>
             </div>
-            <div class="relative z-0 w-full mb-6 group">
-              <input
-                type="text"
-                name="floating_company"
-                id="floating_company"
-                class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required />
-              <label
-                for="floating_company"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >Company (Ex. Google)</label
-              >
-            </div>
-          </div>
-          <button
-            type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Submit
-          </button> -->
+            <button
+              type="submit"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Submit
+            </button> -->
         </form>
       </div>
     </NuxtLayout>
@@ -270,6 +279,15 @@
 </template>
 
 <script setup>
+  const BaseUrl = "https://elearning.ukmtechcode.com";
+  const { updatebyuuid } = useRoute().params;
+  const UrlActifityUuid = BaseUrl + "/api/getoneactifity/" + updatebyuuid;
+  const { data: actifityupdate } = await useFetch(UrlActifityUuid);
+
+  //   url get data actifity categories
+  const { data: data_categories } = await useFetch(
+    BaseUrl + "/api/actifity_categories/"
+  );
   definePageMeta({
     layout: false,
   });

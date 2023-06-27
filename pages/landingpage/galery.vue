@@ -13,7 +13,7 @@
           <NuxtLink :to="'/landingpage/' + actifity.actifity_uuid">
             <img
               class="rounded-t-lg mx-auto w-96 h-64"
-              :src="'http://127.0.0.1:8000' + actifity.actifity_foto"
+              :src="MyUrl + actifity.actifity_foto"
               alt="" />
           </NuxtLink>
         </div>
@@ -23,9 +23,8 @@
 </template>
 
 <script setup>
-  const { data: data_actifity } = await useFetch(
-    "http://127.0.0.1:8000/api/actifities"
-  );
+  const MyUrl = "https://elearning.ukmtechcode.com";
+  const { data: data_actifity } = await useFetch(MyUrl + "/api/actifities");
 </script>
 
 <style lang="scss" scoped></style>

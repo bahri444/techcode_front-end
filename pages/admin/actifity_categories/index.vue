@@ -1,11 +1,39 @@
 <template>
   <div>
     <NuxtLayout name="sidebar">
-      <div>
+      <div class="container">
+        <p class="font-semibold text-center mt-2 mb-5">Actifity Categories</p>
+        <NuxtLink
+          to="/admin/actifity_categories/addcategories"
+          class="flex mb-5 py-2 px-3 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#f1f5f9"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            id="plus">
+            <g
+              fill="none"
+              fill-rule="evenodd"
+              stroke="#f1f5f9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              transform="translate(2 2)">
+              <line x1="10" x2="10" y1="6.327" y2="13.654"></line>
+              <line x1="13.667" x2="6.333" y1="9.99" y2="9.99"></line>
+              <path
+                d="M14.6857143,0 L5.31428571,0 C2.04761905,0 0,2.31208373 0,5.58515699 L0,14.414843 C0,17.6879163 2.03809524,20 5.31428571,20 L14.6857143,20 C17.9619048,20 20,17.6879163 20,14.414843 L20,5.58515699 C20,2.31208373 17.9619048,0 14.6857143,0 Z"></path>
+            </g>
+          </svg>
+          <span class="mt-1 ml-1"> Add data </span>
+        </NuxtLink>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
           <!-- :columns="columns"
             :options="options"
             ajax="http://127.0.0.1:8000/api/actifity_categories" -->
+
           <table class="w-full text-sm text-left text-slate-500">
             <thead
               class="bg-slate-100 text-xs border-b text-slate-700 uppercase hover:bg-slate-50 text-center">
@@ -27,6 +55,10 @@
                 <td class="px-3 py-2 mx-auto">
                   <div class="grid lg:grid-cols-2 md:grid-cols-1 w-28 mx-auto">
                     <NuxtLink
+                      :to="
+                        '/admin/actifity_categories/update/' +
+                        row.actifity_categories_uuid
+                      "
                       class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-gradient-to-r from-cyan-500 to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -92,8 +124,9 @@
   //   });
   //   table.search("Fiona");
   //   table.draw();
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   const { data: data_categories, index = 1 } = await useFetch(
-    `http://127.0.0.1:8000/api/actifity_categories`
+    BaseUrl + `/api/actifity_categories`
   );
 
   definePageMeta({

@@ -9,7 +9,7 @@
         <div class="md:flex-shrink-0 mx-auto">
           <img
             class="rounded-md lg:w-80 md:w-80 lg:h-42 md:h-42 mx-auto"
-            :src="'http://127.0.0.1:8000' + industry.industy_logo"
+            :src="MyUrl + industry.industy_logo"
             alt="Woman paying for a purchase" />
         </div>
         <div class="text-center mt-5 mx-auto">
@@ -45,9 +45,8 @@
 </template>
 
 <script setup>
-  const { data: industries } = await useFetch(
-    "http://127.0.0.1:8000/api/getallindustries"
-  );
+  const MyUrl = "https://elearning.ukmtechcode.com";
+  const { data: industries } = await useFetch(MyUrl + "/api/getallindustries");
 </script>
 
 <style lang="scss" scoped></style>

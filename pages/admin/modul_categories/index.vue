@@ -97,8 +97,9 @@
 </template>
 
 <script setup>
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   const { data: e_book_categories, error } = await useFetch(
-    "http://127.0.0.1:8000/api/getallmodulcategories"
+    BaseUrl + "/api/getallmodulcategories"
   );
   definePageMeta({
     layout: false,

@@ -3,7 +3,7 @@
     <div class="md:flex-shrink-0 md:mx-auto lg:w-1/2 sm:2/3">
       <img
         class="rounded-md md:w-80 lg:w-full lg:h-auto md:h-80"
-        :src="'http://127.0.0.1:8000' + data_actifity.actifity_foto"
+        :src="MyUrl + data_actifity.actifity_foto"
         alt="404" />
     </div>
     <div class="mt-2 md:mt-5 md:ml-6 lg:w-1/2 mx-auto">
@@ -21,8 +21,9 @@
 </template>
 
 <script setup>
+  const MyUrl = "https://elearning.ukmtechcode.com";
   const { galery_detail } = useRoute().params;
-  const URLGalery = "http://127.0.0.1:8000/api/getoneactifity/" + galery_detail;
+  const URLGalery = MyUrl + "/api/getoneactifity/" + galery_detail;
   const { data: data_actifity } = await useFetch(URLGalery);
 </script>
 

@@ -69,7 +69,7 @@
                 <div class="grid lg:grid-cols-3 md:grid-cols-1 w-44 mx-auto">
                   <!-- BUTTON EDIT -->
                   <NuxtLink
-                    to="/admin/actifity/update_actifity"
+                    :to="'/admin/actifity/update/' + rows.actifity_uuid"
                     class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -136,8 +136,9 @@
 </template>
 
 <script setup>
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   const { data: data_actifity, error } = await useFetch(
-    "http://127.0.0.1:8000/api/actifities"
+    BaseUrl + "/api/actifities"
   );
   //   console.log(data_actifity);
   //   console.log(data_actifity["data_actifity"][[0][to_actifity_categories]]);

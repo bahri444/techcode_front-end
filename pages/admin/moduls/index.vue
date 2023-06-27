@@ -135,9 +135,8 @@
 </template>
 
 <script setup>
-  const { data: data_moduls } = await useFetch(
-    "http://127.0.0.1:8000/api/getallmoduls"
-  );
+  const BaseUrl = "https://elearning.ukmtechcode.com";
+  const { data: data_moduls } = await useFetch(BaseUrl + "/api/getallmoduls");
   definePageMeta({
     layout: false,
   });

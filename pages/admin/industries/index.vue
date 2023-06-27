@@ -4,7 +4,7 @@
       <div class="container">
         <p class="font-semibold text-center mt-2 mb-5">Industries</p>
         <NuxtLink
-          to="/admin/industries/add_industries"
+          to="/admin/industries/addindustries"
           class="flex mb-5 py-2 px-3 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@
                 <div class="grid lg:grid-cols-3 md:grid-cols-1 w-44 mx-auto">
                   <!-- BUTTON EDIT -->
                   <NuxtLink
-                    to="/admin/actifity/update_actifity"
+                    :to="'/admin/industries/update/' + rows.industry_uuid"
                     class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -118,8 +118,9 @@
 </template>
 
 <script setup>
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   const { data: industry, error } = await useFetch(
-    "http://127.0.0.1:8000/api/getallindustries"
+    BaseUrl + "/api/getallindustries"
   );
   definePageMeta({
     layout: false,

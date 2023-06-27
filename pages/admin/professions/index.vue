@@ -53,7 +53,7 @@
                 <div class="grid lg:grid-cols-2 md:grid-cols-1 w-44 mx-auto">
                   <!-- BUTTON EDIT -->
                   <NuxtLink
-                    to="/admin/modul_categories/#"
+                    to="/admin/profession/#"
                     class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@
                   </NuxtLink>
                   <!-- BUTTON DELETE -->
                   <NuxtLink
-                    to="/admin/modul_categories/#"
+                    to="/admin/profession/#"
                     class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -97,8 +97,9 @@
 </template>
 
 <script setup>
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   const { data: profession } = await useFetch(
-    "http://127.0.0.1:8000/api/getallprofessions"
+    BaseUrl + "/api/getallprofessions"
   );
   definePageMeta({
     layout: false,

@@ -44,7 +44,7 @@
             <NuxtLink to="/landingpage/galery">Galery</NuxtLink>
           </li>
           <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
-            <NuxtLink to="/landingpage/biografhy">Bigrafhy</NuxtLink>
+            <NuxtLink to="/landingpage/biografhy">Biografhy</NuxtLink>
           </li>
           <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
             <NuxtLink to="/landingpage/about">About</NuxtLink>

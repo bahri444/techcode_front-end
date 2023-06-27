@@ -1,6 +1,7 @@
 <template>
   <div>
     <NuxtLayout name="sidebar">
+      <p class="font-semibold text-center mt-2 mb-5">Dashboard</p>
       <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
         <div class="w-full px-4 py-5 bg-white rounded-lg shadow-md">
           <div class="text-sm font-medium text-gray-500 truncate">

@@ -10,7 +10,7 @@
         <div class="md:flex-shrink-0 md:mx-auto lg:w-1/2 sm:2/3">
           <img
             class="rounded-md md:w-32 lg:w-64 lg:h-auto md:h-32"
-            :src="'http://127.0.0.1:8000' + industry.industy_logo"
+            :src="BaseUrl + industry.industy_logo"
             alt="404" />
         </div>
         <div class="mt-2 md:mt-5 md:ml-6 lg:w-1/2 mx-auto">
@@ -32,9 +32,9 @@
   </div>
 </template>
 <script setup>
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   const { detailuuid } = useRoute().params;
-  const UrlIndustries =
-    "http://127.0.0.1:8000/api/getindustriesbyuuid/" + detailuuid;
+  const UrlIndustries = BaseUrl + "/api/getindustriesbyuuid/" + detailuuid;
   const { data: industry } = await useFetch(UrlIndustries);
   console.log(industry);
   definePageMeta({ layout: false });

@@ -110,9 +110,8 @@
 </template>
 
 <script setup>
-  const { data: all_class } = await useFetch(
-    "http://127.0.0.1:8000/api/getallclass"
-  );
+  const BaseUrl = "https://elearning.ukmtechcode.com";
+  const { data: all_class } = await useFetch(BaseUrl + "/api/getallclass");
   definePageMeta({
     layout: false,
   });
