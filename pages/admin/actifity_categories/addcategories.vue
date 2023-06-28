@@ -2,7 +2,7 @@
   <NuxtLayout name="sidebar">
     <div
       class="box bg-blue-50 sm:mx-auto sm:w-full sm:max-w-xl p-5 mt-5 rounded">
-      <form>
+      <form @submit.prevent="saveCategories">
         <!-- JUDUL FORM -->
         <div class="sm:mx-auto sm:w-full sm:max-w-sm mb-4">
           <h2
@@ -17,7 +17,7 @@
           <input
             type="text"
             name="floating_password"
-            v-model="actifity_categories_name"
+            v-model="categories.actifity_categories_name"
             id="floating_password"
             class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=""
@@ -79,8 +79,32 @@
   </NuxtLayout>
 </template>
 
-<script setup>
+<script>
+  import axios from "axios";
   definePageMeta({ layout: false });
+  export default {
+    name: "Categories",
+    data() {
+      return {
+        categories: {
+          actifity_categories_name: "",
+        },
+      };
+    },
+    methods: {
+      saveCategories() {
+        axios
+          .post(
+            "https://elearning.ukmtechcode.com/api/add_actifity_categories",
+            this.categories
+          )
+          .then((res) => {
+            alert("ready to save");
+            this.categories.actifity_categories_name = "";
+          });
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped></style>

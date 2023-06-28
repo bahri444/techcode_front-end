@@ -46,7 +46,7 @@
             </thead>
             <tbody id="example">
               <tr
-                v-for="row in data_categories"
+                v-for="row in categories"
                 :key="row.actifity_categories_uuid"
                 class="bg-white border-b hover:bg-slate-100 text-center">
                 <td class="px-6 py-4">{{ index++ }}</td>
@@ -100,6 +100,8 @@
   </div>
 </template>
 <script setup>
+  //   import axios from "axios";
+
   //   import DataTable from "datatables.net-vue3";
   //   import DataTablesLib from "datatables.net";
   //   import "datatables.net-responsive";
@@ -124,13 +126,33 @@
   //   });
   //   table.search("Fiona");
   //   table.draw();
+
+  //   data fetching
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  const { data: data_categories, index = 1 } = await useFetch(
+  const { data: categories, index = 1 } = await useFetch(
     BaseUrl + `/api/actifity_categories`
   );
 
-  definePageMeta({
-    layout: false,
-  });
+  definePageMeta({ layout: false });
+  //   export default {
+  // name: "Categories",
+  // data() {
+  //   return {
+  //     categories: {},
+  //   };
+  // },
+  // mounted() {
+  //   this.getDataCategories();
+  // },
+  // methods: {
+  //   getDataCategories() {
+  //     axios
+  //       .get("https://elearning.ukmtechcode.com/api/actifity_categories")
+  //       .then((res) => {
+  //         console.log(res.data.categories);
+  //       });
+  //   },
+  // },
+  //   };
 </script>
 <style lang="scss" scoped></style>
