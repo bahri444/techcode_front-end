@@ -2,7 +2,7 @@
   <NuxtLayout name="sidebar">
     <div
       class="box bg-blue-50 sm:mx-auto sm:w-full sm:max-w-xl p-5 mt-5 rounded">
-      <form>
+      <form @submit.prevent="UpdateCategories">
         <!-- JUDUL FORM -->
         <div class="sm:mx-auto sm:w-full sm:max-w-sm mb-4">
           <h2
@@ -17,7 +17,7 @@
           <input
             type="text"
             name="floating_password"
-            v-model="actifity_categories_name"
+            v-model="categories.actifity_categories_name"
             id="floating_password"
             class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=""
@@ -78,13 +78,50 @@
   </NuxtLayout>
 </template>
 
-<script setup>
+<!-- <script setup> -->
+<script>
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  const { updatecategories } = useRoute().params;
-  const url_category = BaseUrl + "/api/actifity_category/" + updatecategories;
-  const { data: categories } = await useFetch(url_category);
-  //   console.log(categories);
+  //   const { updatecategories } = useRoute().params;
+  //   const url_category = BaseUrl + "/api/actifity_category/" + updatecategories;
+  //   const { data: categories } = await useFetch(url_category);
+
+  import axios from "axios";
   definePageMeta({ layout: false });
+  export default {
+    name: "Categories",
+    data() {
+      return {
+        updateByUuid: "",
+        categories: {},
+      };
+    },
+    mounted() {
+      this.updateByUuid = this.$route.params.updatecategories;
+      this.getCategoryByUuid(this.updateByUuid);
+    },
+    methods: {
+      //function get data berdasarkan uuid
+      getCategoryByUuid(updateByUuid) {
+        axios
+          .get(BaseUrl + `/api/actifity_category/${updateByUuid}`)
+          .then((res) => {
+            this.categories = res.data.data_actifity_categori; //jika data yang di ambil dari api berupa objek maka harus di tangkap dengan cara "res.data.nama_objek"
+          });
+      },
+
+      UpdateCategories() {
+        axios
+          .put(
+            BaseUrl + `/api/update_actifity_category/${this.updateByUuid}`,
+            this.categories
+          )
+          .then((res) => {
+            alert("data berhasil di update");
+            // this.categories.actifity_categories_name = ""; code ini berfungsi untuk mengosongkan form setelah data dikirim
+          });
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped></style>

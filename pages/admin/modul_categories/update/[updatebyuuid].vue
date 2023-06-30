@@ -2,12 +2,12 @@
   <NuxtLayout name="sidebar">
     <div
       class="box bg-blue-50 sm:mx-auto sm:w-full sm:max-w-xl p-5 mt-5 rounded">
-      <form @submit.prevent="saveCategories">
+      <form @submit.prevent="UpdateEBookCategories">
         <!-- JUDUL FORM -->
         <div class="sm:mx-auto sm:w-full sm:max-w-sm mb-4">
           <h2
             class="text-center text-1xl font-bold leading-9 tracking-tight text-slate-900">
-            ADD ACTIFITY CATEGORIES
+            UPDATE MODUL CATEGORIES
           </h2>
         </div>
         <!-- END JUDUL FORM -->
@@ -17,7 +17,7 @@
           <input
             type="text"
             name="floating_password"
-            v-model="categories.actifity_categories_name"
+            v-model="e_book_categories.categories_name"
             id="floating_password"
             class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=""
@@ -33,7 +33,7 @@
         <!--  BUTTON AND LINK -->
         <div class="mt-4 flex items-center justify-end gap-x-6">
           <NuxtLink
-            to="/admin/actifity_categories"
+            to="/admin/modul_categories"
             class="text-sm font-semibold leading-6 text-slate-50 bg-orange-500 rounded-md flex items-center p-2 space-x-3 hover:bg-orange-400 to-transparent">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,27 +81,37 @@
 
 <script>
   import axios from "axios";
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   definePageMeta({ layout: false });
   export default {
-    name: "Categories",
+    name: "update",
     data() {
       return {
-        categories: {
-          actifity_categories_name: "",
-        },
+        UpdateByUuid: "",
+        e_book_categories: {},
       };
     },
+    mounted() {
+      this.UpdateByUuid = this.$route.params.updatebyuuid;
+      this.GetEBookCategoryByUuid(this.UpdateByUuid);
+    },
     methods: {
-      saveCategories() {
+      GetEBookCategoryByUuid(UpdateByUuid) {
         axios
-          .post(
-            "https://elearning.ukmtechcode.com/api/add_actifity_categories",
-            this.categories
-          )
+          .get(BaseUrl + `/api/getmodulcategoriesbyuuid/${UpdateByUuid}`)
           .then((res) => {
-            alert("add data succesfully");
-            this.categories.actifity_categories_name = "";
+            console.log(res);
+            this.e_book_categories = res.data.data;
           });
+      },
+
+      UpdateEBookCategories() {
+        axios
+          .put(
+            BaseUrl + `/api/updatemodulcategories/${this.UpdateByUuid}`,
+            this.e_book_categories
+          )
+          .then((res) => alert("data berhasil di update"));
       },
     },
   };

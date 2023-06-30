@@ -42,7 +42,7 @@
           </thead>
           <tbody>
             <tr
-              v-for="vals in e_book_categories"
+              v-for="(vals, index) in e_book_categories"
               :key="vals.modul_categories_uuid"
               class="bg-white border-b hover:bg-slate-100 text-center">
               <td class="px-6 py-4">{{ vals.modul_categories_uuid }}</td>
@@ -53,8 +53,11 @@
                 <div class="grid lg:grid-cols-2 md:grid-cols-1 w-44 mx-auto">
                   <!-- BUTTON EDIT -->
                   <NuxtLink
-                    to="/admin/modul_categories/#"
-                    class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
+                    :to="
+                      '/admin/modul_categories/update/' +
+                      vals.modul_categories_uuid
+                    "
+                    class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       data-name="Layer 1"
@@ -71,9 +74,16 @@
                     </svg>
                   </NuxtLink>
                   <!-- BUTTON DELETE -->
-                  <NuxtLink
-                    to="/admin/modul_categories/#"
-                    class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1">
+                  <button
+                    type="button"
+                    @click="
+                      ($event) =>
+                        DeleteEBookCategories(
+                          $event,
+                          vals.modul_categories_uuid
+                        )
+                    "
+                    class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -85,7 +95,7 @@
                       <path
                         d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"></path>
                     </svg>
-                  </NuxtLink>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -96,14 +106,44 @@
   </div>
 </template>
 
-<script setup>
+<script>
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  const { data: e_book_categories, error } = await useFetch(
-    BaseUrl + "/api/getallmodulcategories"
-  );
-  definePageMeta({
-    layout: false,
-  });
+  //   const { data: e_book_categories, error } = await useFetch(
+  //     BaseUrl + "/api/getallmodulcategories"
+  //   );
+  definePageMeta({ layout: false });
+  import axios from "axios";
+  export default {
+    data() {
+      return {
+        e_book_categories: {},
+      };
+    },
+    mounted() {
+      this.GetAllEBookCategories();
+    },
+    methods: {
+      GetAllEBookCategories() {
+        axios.get(BaseUrl + `/api/getallmodulcategories`).then((res) => {
+          this.e_book_categories = res.data;
+        });
+      },
+      DeleteEBookCategories(event, e_book_categories_by_uuid) {
+        if (confirm("Apakah anda yakin ingin menghapus data ini ?")) {
+          event.target.innerText = "deleting";
+          axios
+            .delete(
+              BaseUrl +
+                `/api/deletemodulcategories/${e_book_categories_by_uuid}`
+            )
+            .then((res) => {
+              event.target.innerText = "delete";
+              this.GetAllEBookCategories();
+            });
+        }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped></style>

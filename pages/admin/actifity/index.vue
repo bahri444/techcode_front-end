@@ -70,7 +70,7 @@
                   <!-- BUTTON EDIT -->
                   <NuxtLink
                     :to="'/admin/actifity/update/' + rows.actifity_uuid"
-                    class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
+                    class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       data-name="Layer 1"
@@ -89,7 +89,7 @@
                   <!-- BUTTON INFO -->
                   <NuxtLink
                     :to="'/admin/actifity/' + rows.actifity_uuid"
-                    class="py-2 w-12 bg-teal-500 text-white font-semibold rounded-lg shadow-md hover:bg-teal-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1"
+                    class="py-2 w-12 bg-teal-500 text-white font-semibold rounded-lg shadow-md hover:bg-teal-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1"
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -112,7 +112,7 @@
                   <!-- BUTTON DELETE -->
                   <NuxtLink
                     to="/admin/actifity/delete_actifity"
-                    class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1">
+                    class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"

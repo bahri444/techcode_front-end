@@ -46,11 +46,11 @@
             </thead>
             <tbody id="example">
               <tr
-                v-for="row in categories"
+                v-for="(row, index) in categories"
                 :key="row.actifity_categories_uuid"
                 class="bg-white border-b hover:bg-slate-100 text-center">
-                <td class="px-6 py-4">{{ index++ }}</td>
-                <td class="px-6 py-4">{{ row.actifity_categories_uuid }}</td>
+                <td class="px-6 py-4">{{ index + 1 }}</td>
+                <td class="px-6 py-4">{{ row["actifity_categories_uuid"] }}</td>
                 <td class="px-6 py-4">{{ row.actifity_categories_name }}</td>
                 <td class="px-3 py-2 mx-auto">
                   <div class="grid lg:grid-cols-2 md:grid-cols-1 w-28 mx-auto">
@@ -59,7 +59,7 @@
                         '/admin/actifity_categories/update/' +
                         row.actifity_categories_uuid
                       "
-                      class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-gradient-to-r from-cyan-500 to-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
+                      class="py-2 w-12 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         data-name="Layer 1"
@@ -75,9 +75,14 @@
                           d="M9.455,10.544l-.789,3.614a1,1,0,0,0,.271.921,1.038,1.038,0,0,0,.92.269l3.606-.791a1,1,0,0,0,.494-.271l9.114-9.114a3,3,0,0,0,0-4.243,3.07,3.07,0,0,0-4.242,0l-9.1,9.123A1,1,0,0,0,9.455,10.544Zm10.788-8.2a1.022,1.022,0,0,1,1.414,0,1.009,1.009,0,0,1,0,1.413l-.707.707L19.536,3.05Zm-8.9,8.914,6.774-6.791,1.4,1.407-6.777,6.793-1.795.394Z"></path>
                       </svg>
                     </NuxtLink>
-                    <NuxtLink
-                      class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-gradient-to-r from-blue-300 to-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1"
-                      ><svg
+                    <button
+                      type="button"
+                      @click="
+                        ($event) =>
+                          deleteCategories($event, row.actifity_categories_uuid)
+                      "
+                      class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
+                      <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="#f1f5f9"
@@ -88,7 +93,8 @@
                         <path
                           d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"></path>
                       </svg>
-                    </NuxtLink>
+                    </button>
+                    <NuxtLink> </NuxtLink>
                   </div>
                 </td>
               </tr>
@@ -99,9 +105,7 @@
     </NuxtLayout>
   </div>
 </template>
-<script setup>
-  //   import axios from "axios";
-
+<script>
   //   import DataTable from "datatables.net-vue3";
   //   import DataTablesLib from "datatables.net";
   //   import "datatables.net-responsive";
@@ -128,31 +132,41 @@
   //   table.draw();
 
   //   data fetching
+  //   const BaseUrl = "https://elearning.ukmtechcode.com";
+  //   const { data: categories, index = 1 } = await useFetch(
+  //     BaseUrl + `/api/actifity_categories`
+  //   );
+  import axios from "axios";
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  const { data: categories, index = 1 } = await useFetch(
-    BaseUrl + `/api/actifity_categories`
-  );
-
   definePageMeta({ layout: false });
-  //   export default {
-  // name: "Categories",
-  // data() {
-  //   return {
-  //     categories: {},
-  //   };
-  // },
-  // mounted() {
-  //   this.getDataCategories();
-  // },
-  // methods: {
-  //   getDataCategories() {
-  //     axios
-  //       .get("https://elearning.ukmtechcode.com/api/actifity_categories")
-  //       .then((res) => {
-  //         console.log(res.data.categories);
-  //       });
-  //   },
-  // },
-  //   };
+  export default {
+    name: "row",
+    data() {
+      return {
+        categories: {},
+      };
+    },
+    mounted() {
+      this.getDataCategories();
+    },
+    methods: {
+      getDataCategories() {
+        axios.get(BaseUrl + "/api/actifity_categories").then((res) => {
+          this.categories = res.data;
+        });
+      },
+      deleteCategories(event, categoriesUuid) {
+        if (confirm("Apakah anda yakin ingin menghapus data ini ?")) {
+          event.target.innerText = "Deleting";
+          axios
+            .delete(BaseUrl + `/api/delete_actifity_category/${categoriesUuid}`)
+            .then((res) => {
+              event.target.innerText = "Delete";
+              this.getDataCategories();
+            });
+        }
+      },
+    },
+  };
 </script>
 <style lang="scss" scoped></style>

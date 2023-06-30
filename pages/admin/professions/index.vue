@@ -4,7 +4,7 @@
       <div class="container">
         <p class="font-semibold text-center mt-2 mb-5">Profession</p>
         <NuxtLink
-          to="/admin/modul_categories/addmodulcategories"
+          to="/admin/professions/addprofession"
           class="flex mb-5 py-2 px-3 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@
                 <div class="grid lg:grid-cols-2 md:grid-cols-1 w-44 mx-auto">
                   <!-- BUTTON EDIT -->
                   <NuxtLink
-                    to="/admin/profession/#"
+                    :to="'/admin/professions/update/' + vals.profession_uuid"
                     class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +71,11 @@
                     </svg>
                   </NuxtLink>
                   <!-- BUTTON DELETE -->
-                  <NuxtLink
-                    to="/admin/profession/#"
+                  <button
+                    type="button"
+                    @click="
+                      ($event) => DeleteProfession($event, vals.profession_uuid)
+                    "
                     class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +88,7 @@
                       <path
                         d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"></path>
                     </svg>
-                  </NuxtLink>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -96,14 +99,44 @@
   </div>
 </template>
 
-<script setup>
+<script>
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  const { data: profession } = await useFetch(
-    BaseUrl + "/api/getallprofessions"
-  );
-  definePageMeta({
-    layout: false,
-  });
+  //   const { data: profession } = await useFetch(
+  //     BaseUrl + "/api/getallprofessions"
+  //   );
+  import axios from "axios";
+  definePageMeta({ layout: false });
+  export default {
+    name: "vals",
+    data() {
+      return {
+        deleteByUuid: "",
+        profession: {},
+      };
+    },
+    mounted() {
+      this.GetDataProfessions();
+    },
+    methods: {
+      GetDataProfessions() {
+        axios.get(BaseUrl + "/api/getallprofessions").then((res) => {
+          this.profession = res.data;
+        });
+      },
+      //   function delete
+      DeleteProfession(event, deleteByUuid) {
+        if (confirm("apakah anda yakin inngin menghapus data ini ?")) {
+          event.target.innerText = "Deleting";
+          axios
+            .delete(BaseUrl + `/api/deleteprofessions/${deleteByUuid}`)
+            .then((res) => {
+              event.target.innerText = "delete";
+              this.GetDataProfessions();
+            });
+        }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped></style>

@@ -2,12 +2,12 @@
   <NuxtLayout name="sidebar">
     <div
       class="box bg-blue-50 sm:mx-auto sm:w-full sm:max-w-xl p-5 mt-5 rounded">
-      <form @submit.prevent="saveCategories">
+      <form @submit.prevent="AddProfession">
         <!-- JUDUL FORM -->
         <div class="sm:mx-auto sm:w-full sm:max-w-sm mb-4">
           <h2
             class="text-center text-1xl font-bold leading-9 tracking-tight text-slate-900">
-            ADD ACTIFITY CATEGORIES
+            ADD PROFESSION
           </h2>
         </div>
         <!-- END JUDUL FORM -->
@@ -17,7 +17,7 @@
           <input
             type="text"
             name="floating_password"
-            v-model="categories.actifity_categories_name"
+            v-model="profession.profession_name"
             id="floating_password"
             class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=""
@@ -25,7 +25,7 @@
           <label
             for="floating_password"
             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Actifity categories name</label
+            >Profession name</label
           >
         </div>
         <!-- END-INPUT NAME KATEGORI KEGIATAN -->
@@ -33,7 +33,7 @@
         <!--  BUTTON AND LINK -->
         <div class="mt-4 flex items-center justify-end gap-x-6">
           <NuxtLink
-            to="/admin/actifity_categories"
+            to="/admin/professions"
             class="text-sm font-semibold leading-6 text-slate-50 bg-orange-500 rounded-md flex items-center p-2 space-x-3 hover:bg-orange-400 to-transparent">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,26 +81,24 @@
 
 <script>
   import axios from "axios";
+  const BaseUrl = "https://elearning.ukmtechcode.com";
   definePageMeta({ layout: false });
   export default {
-    name: "Categories",
+    name: "professions",
     data() {
       return {
-        categories: {
-          actifity_categories_name: "",
+        profession: {
+          profession_name: "",
         },
       };
     },
     methods: {
-      saveCategories() {
+      AddProfession() {
         axios
-          .post(
-            "https://elearning.ukmtechcode.com/api/add_actifity_categories",
-            this.categories
-          )
+          .post(BaseUrl + "/api/addprofessions", this.profession)
           .then((res) => {
-            alert("add data succesfully");
-            this.categories.actifity_categories_name = "";
+            alert("data berhasil di tambahkan");
+            this.profession.profession_name = "";
           });
       },
     },
