@@ -101,9 +101,6 @@
 
 <script>
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  //   const { data: profession } = await useFetch(
-  //     BaseUrl + "/api/getallprofessions"
-  //   );
   import axios from "axios";
   definePageMeta({ layout: false });
   export default {

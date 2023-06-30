@@ -99,7 +99,7 @@
         axios
           .get(BaseUrl + `/api/getprofessionsbyuuid/${UpdateUuid}`)
           .then((res) => {
-            this.profession = res.data;
+            this.profession = res.data.profession_byuuid;
           });
       },
       UpdateProfession() {
