@@ -41,7 +41,7 @@
           </thead>
           <tbody>
             <tr
-              v-for="rows in industry"
+              v-for="rows in industries"
               :key="rows.actifity_uuid"
               class="bg-white border-b hover:bg-slate-100 text-center">
               <td class="px-6 py-4">{{ rows.industry_uuid }}</td>
@@ -117,13 +117,29 @@
   </div>
 </template>
 
-<script setup>
+<script>
+  import axios from "axios";
+
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  const { data: industry, error } = await useFetch(
-    BaseUrl + "/api/getallindustries"
-  );
-  definePageMeta({
-    layout: false,
-  });
+  definePageMeta({ layout: false });
+  export default {
+    data() {
+      return {
+        industries: {},
+      };
+    },
+    mounted() {
+      this.GetDataIndustries();
+    },
+    methods: {
+      // function get all data
+      GetDataIndustries() {
+        axios.get(BaseUrl + "/api/getallindustries").then((res) => {
+          console.log(res);
+          this.industries = res.data;
+        });
+      },
+    },
+  };
 </script>
 <style lang="scss" scoped></style>

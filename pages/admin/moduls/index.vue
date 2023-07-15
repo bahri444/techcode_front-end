@@ -3,7 +3,7 @@
     <NuxtLayout name="sidebar">
       <!-- modul_uuid	modul_categories_uuid	class_uuid	modul_title	modul_files	modul_to	learn_state -->
       <div class="container">
-        <p class="font-semibold text-center mt-2 mb-5">E-Book Categories</p>
+        <p class="font-semibold text-center mt-2 mb-5">E-Books</p>
         <NuxtLink
           to="/admin/modul_categories/addmodulcategories"
           class="flex mb-5 py-2 px-3 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">

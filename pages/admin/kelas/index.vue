@@ -4,7 +4,7 @@
       <div class="container">
         <p class="font-semibold text-center mt-2 mb-5">Class</p>
         <NuxtLink
-          to="/admin/modul_categories/addmodulcategories"
+          to="/admin/kelas/addclass"
           class="flex mb-5 py-2 px-3 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,8 +38,8 @@
               <th scope="col" class="px-6 py-4">class name</th>
               <th scope="col" class="px-6 py-4">price class</th>
               <th scope="col" class="px-6 py-4">class duration</th>
-              <th scope="col" class="px-6 py-4">start</th>
-              <th scope="col" class="px-6 py-4">end</th>
+              <th scope="col" class="px-6 py-4">start date</th>
+              <th scope="col" class="px-6 py-4">end date</th>
               <th scope="col" class="px-6 py-4">Aksi</th>
             </tr>
           </thead>
@@ -60,13 +60,13 @@
               <td class="px-6 py-4">
                 {{ vals.class_duration }}. {{ "bulan" }}
               </td>
-              <td class="px-6 py-4">{{ vals.start }}</td>
-              <td class="px-6 py-4">{{ vals.end }}</td>
+              <td class="px-6 py-4">{{ vals.start_date }}</td>
+              <td class="px-6 py-4">{{ vals.end_date }}</td>
               <td class="text-center px-6 py-4">
                 <div class="grid lg:grid-cols-2 md:grid-cols-1 w-44 mx-auto">
                   <!-- BUTTON EDIT -->
                   <NuxtLink
-                    to="/admin/modul_categories/#"
+                    :to="'/admin/kelas/update/' + vals.class_uuid"
                     class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -84,8 +84,9 @@
                     </svg>
                   </NuxtLink>
                   <!-- BUTTON DELETE -->
-                  <NuxtLink
-                    to="/admin/modul_categories/#"
+                  <button
+                    type="button"
+                    @click="($event) => DeleteClasses($event, vals.class_uuid)"
                     class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +99,7 @@
                       <path
                         d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"></path>
                     </svg>
-                  </NuxtLink>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -109,12 +110,42 @@
   </div>
 </template>
 
-<script setup>
+<script>
+  import axios from "axios";
+
   const BaseUrl = "https://elearning.ukmtechcode.com";
-  const { data: all_class } = await useFetch(BaseUrl + "/api/getallclass");
-  definePageMeta({
-    layout: false,
-  });
+  //   const { data: all_class } = await useFetch(BaseUrl + "/api/getallclass");
+  definePageMeta({ layout: false });
+  export default {
+    data() {
+      return {
+        all_class: {},
+      };
+    },
+    mounted() {
+      this.GetAllClass();
+    },
+    methods: {
+      // function get all data
+      GetAllClass() {
+        axios.get(BaseUrl + "/api/getallclass").then((res) => {
+          this.all_class = res.data;
+        });
+      },
+      // function delete
+      DeleteClasses(event, classByUuid) {
+        if (confirm("Apakah anda yakin ingin menghapus data ini ?")) {
+          event.innerText = "delete";
+          axios
+            .delete(BaseUrl + `/api/deleteclass/${classByUuid}`)
+            .then((res) => {
+              event.target.innerText = "delete";
+              this.GetAllClass();
+            });
+        }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped></style>

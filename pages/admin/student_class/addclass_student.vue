@@ -1,23 +1,59 @@
 <template>
-  <NuxtLayout name="sidebar">
-    <div
+  <NuxtLayout name="sidebar"
+    ><div
       class="box bg-blue-50 sm:mx-auto sm:w-full sm:max-w-xl p-5 mt-5 rounded">
       <form @submit.prevent="AddProfession">
         <!-- JUDUL FORM -->
         <div class="sm:mx-auto sm:w-full sm:max-w-sm mb-4">
           <h2
             class="text-center text-1xl font-bold leading-9 tracking-tight text-slate-900">
-            UPDATE INDUSTRIES
+            ADD STUDENT CLASS
           </h2>
         </div>
         <!-- END JUDUL FORM -->
+        <!--user_uuid	class_uuid	date_checkout_class	price_state -->
+        <!-- INPUT USER UUID -->
+        <div class="relative z-0 w-full mb-8 group">
+          <select
+            id="floating_password"
+            v-model="user_uuid"
+            name="floating_password"
+            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+            <option selected>select members</option>
+            <option value="{{  }}">{{ "testing" }}</option>
+          </select>
+          <label
+            for="floating_password"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            User
+          </label>
+        </div>
+        <!-- END-INPUT USER UUID -->
 
-        <!-- INPUT INDUSTRY NAME -->
+        <!-- INPUT CLASS UUID -->
+        <div class="relative z-0 w-full mb-8 group">
+          <select
+            id="floating_password"
+            v-model="class_uuid"
+            name="floating_password"
+            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+            <option selected>select class</option>
+            <option value="{{  }}">{{ "testing" }}</option>
+          </select>
+          <label
+            for="floating_password"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Select class</label
+          >
+        </div>
+        <!-- END-INPUT CLASS UUID -->
+
+        <!-- INPUT DATE CHECKOUT -->
         <div class="relative z-0 w-full mb-8 group">
           <input
-            type="text"
+            type="date"
             name="floating_password"
-            v-model="industries.industry_name"
+            v-model="date_checkout_class"
             id="floating_password"
             class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=""
@@ -25,100 +61,30 @@
           <label
             for="floating_password"
             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Industry name
+            Date checkout
           </label>
         </div>
-        <!-- END-INPUT INDUSTRY NAME -->
+        <!-- END-INPUT DATE CHECKOUT -->
 
-        <!-- INPUT INDUSTRY LOGO -->
+        <!-- INPUT PRICE STATE -->
         <div class="relative z-0 w-full mb-8 group">
-          <input
-            type="text"
-            name="floating_password"
-            v-model="industries.industy_logo"
+          <select
             id="floating_password"
-            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=""
-            required />
+            v-model="class_uuid"
+            name="floating_password"
+            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+            <option selected>select payment state</option>
+            <option value="{{  }}">
+              {{ "'pending', 'belum_lunas', 'lunas'" }}
+            </option>
+          </select>
           <label
             for="floating_password"
             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Logo
+            Payment state
           </label>
         </div>
-        <!-- END-INPUT INDUSTRY LOGO -->
-
-        <!-- INPUT VISION -->
-        <div class="relative z-0 w-full mb-8 group">
-          <input
-            type="text"
-            name="floating_password"
-            v-model="industries.vision"
-            id="floating_password"
-            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=""
-            required />
-          <label
-            for="floating_password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Vision
-          </label>
-        </div>
-        <!-- END-INPUT VISION -->
-
-        <!-- INPUT MISI -->
-        <div class="relative z-0 w-full mb-8 group">
-          <input
-            type="text"
-            name="floating_password"
-            v-model="industries.mision"
-            id="floating_password"
-            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=""
-            required />
-          <label
-            for="floating_password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Mision
-          </label>
-        </div>
-        <!-- END-INPUT MISI -->
-
-        <!-- INPUT OBJECTIVE (TUJUAN) -->
-        <div class="relative z-0 w-full mb-8 group">
-          <input
-            type="text"
-            name="floating_password"
-            v-model="industries.objective"
-            id="floating_password"
-            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=""
-            required />
-          <label
-            for="floating_password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Objective
-          </label>
-        </div>
-        <!-- END-INPUT OBJECTIVE (TUJUAN) -->
-
-        <!-- INPUT SOCIAL MEDIA -->
-        <div class="relative z-0 w-full mb-8 group">
-          <input
-            type="text"
-            name="floating_password"
-            v-model="industries.social_media"
-            id="floating_password"
-            class="block py-1.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=""
-            required />
-          <label
-            for="floating_password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Social media
-          </label>
-        </div>
-        <!-- END-INPUT SOCIAL MEDIA -->
+        <!-- END-INPUT PRICE STATE -->
 
         <!--  BUTTON AND LINK -->
         <div class="mt-4 flex items-center justify-end gap-x-6">
@@ -171,35 +137,8 @@
 
 <script>
   import axios from "axios";
-
   definePageMeta({ layout: false });
-  export default {
-    data() {
-      return {
-        industries: {
-          industry_name: "",
-          industy_logo: "",
-          vision: "",
-          mision: "",
-          objective: "",
-          social_media: "",
-        },
-      };
-    },
-    methods: {
-      AddIndustries() {
-        axios.post(BaseUrl + "", this.industries).then((res) => {
-          alert("aded data successfuly");
-          this.industries.industry_name = "";
-          this.industries.industy_logo = "";
-          this.industries.vision = "";
-          this.industries.mision = "";
-          this.industries.objective = "";
-          this.industries.social_media = "";
-        });
-      },
-    },
-  };
+  export default {};
 </script>
 
 <style lang="scss" scoped></style>

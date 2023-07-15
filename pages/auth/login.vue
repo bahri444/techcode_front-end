@@ -108,7 +108,7 @@
     </div>
   </div>
   <!-- form 2 -->
-  <div>
+  <!-- <div>
     <form>
       <div class="relative z-0 w-full mb-6 group">
         <input
@@ -219,7 +219,7 @@
         Submit
       </button>
     </form>
-  </div>
+  </div> -->
 </template>
 
 <script>
