@@ -55,9 +55,6 @@
           <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
             <NuxtLink to="/auth/login">Login</NuxtLink>
           </li>
-          <li class="text-sm font-bold text-slate-800 hover:text-blue-600">
-            <NuxtLink to="/products">Produk</NuxtLink>
-          </li>
         </ul>
       </nav>
     </div>
@@ -147,7 +144,7 @@
         </div>
         <div class="px-4 py-6 md:flex md:items-center md:justify-between">
           <span class="text-sm text-slate-50 sm:text-center"
-            >© 2023 <a href="https://flowbite.com/">Flowbite™</a>. All Rights
+            >© 2023 <a href="https://github.com/bahri444">bahri444</a>. All Rights
             Reserved.
           </span>
           <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">

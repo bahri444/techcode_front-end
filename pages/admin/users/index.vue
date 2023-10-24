@@ -5,7 +5,7 @@
         <p class="font-semibold text-center mt-2 mb-5">Akun users</p>
         <NuxtLink
           to="/admin/kelas/addclass"
-          class="flex mb-5 py-2 px-3 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+          class="flex mb-5 py-1 px-2 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="#f1f5f9"
@@ -67,7 +67,7 @@
                   <!-- BUTTON EDIT -->
                   <NuxtLink
                     :to="'/admin/kelas/update/'"
-                    class="py-2 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
+                    class="py-1 w-12 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mr-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       data-name="Layer 1"
@@ -87,7 +87,7 @@
                   <button
                     type="button"
                     @click="($event) => DeleteClasses($event)"
-                    class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1">
+                    class="py-1 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"

@@ -5,7 +5,7 @@
         <p class="font-semibold text-center mt-2 mb-5">Actifity Categories</p>
         <NuxtLink
           to="/admin/actifity_categories/addcategories"
-          class="flex mb-5 py-2 px-3 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+          class="flex mb-5 py-1 px-2 w-32 bg-blue-500 border-slate-700 text-white font-semibold rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="#f1f5f9"
@@ -30,10 +30,6 @@
           <span class="mt-1 ml-1"> Add data </span>
         </NuxtLink>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <!-- :columns="columns"
-            :options="options"
-            ajax="http://127.0.0.1:8000/api/actifity_categories" -->
-
           <table class="w-full text-sm text-left text-slate-500">
             <thead
               class="bg-slate-100 text-xs border-b text-slate-700 uppercase hover:bg-slate-50 text-center">
@@ -52,14 +48,14 @@
                 <td class="px-6 py-4">{{ index + 1 }}</td>
                 <td class="px-6 py-4">{{ row["actifity_categories_uuid"] }}</td>
                 <td class="px-6 py-4">{{ row.actifity_categories_name }}</td>
-                <td class="px-3 py-2 mx-auto">
+                <td class="px-2 py-1 mx-auto">
                   <div class="grid lg:grid-cols-2 md:grid-cols-1 w-28 mx-auto">
                     <NuxtLink
                       :to="
                         '/admin/actifity_categories/update/' +
                         row.actifity_categories_uuid
                       "
-                      class="py-2 w-12 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
+                      class="py-1 w-11 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         data-name="Layer 1"
@@ -81,7 +77,7 @@
                         ($event) =>
                           deleteCategories($event, row.actifity_categories_uuid)
                       "
-                      class="py-2 w-12 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
+                      class="py-1 w-11 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 m-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
